@@ -3,8 +3,8 @@ package auth
 import (
 	"net/http"
 
-	"github.com/bmerchant22/hc_hackathon/mail"
 	"github.com/gin-gonic/gin"
+	"github.com/pclubiitk/fep-backend/mail"
 )
 
 func Router(mail_channel chan mail.Mail, r *gin.Engine) {

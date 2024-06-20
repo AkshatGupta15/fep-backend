@@ -6,10 +6,10 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/bmerchant22/hc_hackathon/mail"
 	"github.com/gin-gonic/gin"
+	_ "github.com/pclubiitk/fep-backend/config"
+	"github.com/pclubiitk/fep-backend/mail"
 	"github.com/spf13/viper"
-	_ "github.com/bmerchant22/hc_hackathon/config"
 )
 
 const charset = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"

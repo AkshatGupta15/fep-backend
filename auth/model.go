@@ -4,8 +4,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/bmerchant22/hc_hackathon/constants"
 	"github.com/gorilla/websocket"
+	"github.com/pclubiitk/fep-backend/constants"
 	"gorm.io/gorm"
 )
 
