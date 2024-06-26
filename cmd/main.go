@@ -26,9 +26,9 @@ func main() {
 	g.Go(func() error {
 		return authServer(mail_channel).ListenAndServe()
 	})
-	g.Go(func() error {
-		return studentServer(mail_channel).ListenAndServe()
-	})
+	// g.Go(func() error {
+	// 	return studentServer(mail_channel).ListenAndServe()
+	// })
 
 	log.Println("Server Started...")
 	if err := g.Wait(); err != nil {
