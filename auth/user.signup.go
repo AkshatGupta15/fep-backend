@@ -3,15 +3,15 @@ package auth
 import (
 	"net/http"
 
-	"github.com/bmerchant22/hc_hackathon/mail"
 	"github.com/gin-gonic/gin"
+	"github.com/pclubiitk/fep-backend/mail"
 	"github.com/sirupsen/logrus"
 )
 
 type signUpRequest struct {
-	UserID    string `json:"user_id" binding:"required"` // roll or PF number
-	Password  string `json:"password" binding:"required"`
-	UserOTP   string `json:"user_otp" binding:"required"`
+	UserID   string `json:"user_id" binding:"required"` // roll or PF number
+	Password string `json:"password" binding:"required"`
+	UserOTP  string `json:"user_otp" binding:"required"`
 }
 
 func signUpHandler(mail_channel chan mail.Mail) gin.HandlerFunc {

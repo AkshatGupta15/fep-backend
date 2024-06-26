@@ -3,11 +3,10 @@ package main
 import (
 	"net/http"
 
-	"github.com/bmerchant22/hc_hackathon/auth"
-	_ "github.com/bmerchant22/hc_hackathon/config"
-	"github.com/bmerchant22/hc_hackathon/mail"
-	"github.com/bmerchant22/hc_hackathon/middleware"
 	"github.com/gin-gonic/gin"
+	"github.com/pclubiitk/fep-backend/auth"
+	"github.com/pclubiitk/fep-backend/mail"
+	"github.com/pclubiitk/fep-backend/middleware"
 	"github.com/spf13/viper"
 )
 

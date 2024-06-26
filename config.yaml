@@ -5,11 +5,13 @@ DATABASE:
 PORT:
   AUTH: "8080"
   APPOINTMENT: "8081"
+  STUDENT: "8082"
 MAIL:
   HOST: "smtp.cc.iitk.ac.in"
   PORT: "25"
 DBNAME:
   AUTH: "auth"
+  STUDENT: "student"
   APPOINTMENT: "appointment"
 OTP:
   EXPIRATION: 20

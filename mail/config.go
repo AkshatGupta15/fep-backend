@@ -1,17 +1,17 @@
 package mail
 
 import (
-	_ "github.com/bmerchant22/hc_hackathon/config"
+	_ "github.com/pclubiitk/fep-backend/config"
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
 )
 
 var (
-	user    string
-	pass    string
-	host    string
-	port    string
-	sender  string
+	user   string
+	pass   string
+	host   string
+	port   string
+	sender string
 )
 
 func init() {
