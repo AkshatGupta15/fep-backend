@@ -9,7 +9,7 @@
 2. Run ```go mod tidy```
 
 3. Run the project:
-``` go run cmd/main.go cmd/auth.go```
+``` go run cmd/main.go cmd/auth.go cmd/project.go cmd/student.go```
 *NOTE*: Configs are set for /backend as root, so don't run ```go run main.go auth.go``` in cmd/
 
 ## Services
