@@ -13,6 +13,7 @@ DBNAME:
   AUTH: "auth"
   STUDENT: "student"
   APPOINTMENT: "appointment"
+  APPLICATION: "application"
 OTP:
   EXPIRATION: 20
   SIZE: 6
