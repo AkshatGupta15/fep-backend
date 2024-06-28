@@ -10,7 +10,7 @@ import (
 )
 
 func adminProjectServer() *http.Server {
-	PORT := viper.GetString("PORT.ADMIN.COMPANY")
+	PORT := viper.GetString("PORT.PROJECT")
 	engine := gin.New()
 	engine.Use(middleware.CORS())
 	engine.Use(middleware.Authenticator())
