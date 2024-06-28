@@ -17,7 +17,6 @@ func adminProjectServer() *http.Server {
 	engine.Use(middleware.EnsureAdmin())
 	engine.Use(gin.Recovery())
 	engine.Use(gin.Logger())
-
 	project.AdminRouter(engine)
 
 	server := &http.Server{
