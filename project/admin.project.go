@@ -55,7 +55,7 @@ func updateProjectHandler(ctx *gin.Context) {
 		return
 	}
 
-	if updateProjectRequest.ID == 0 {
+	if updateProjectRequest.ProjectID == 0 {
 		ctx.AbortWithStatusJSON(http.StatusBadRequest, gin.H{"error": "Enter Project ID"})
 		return
 	}
