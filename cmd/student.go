@@ -16,10 +16,8 @@ func studentServer(mail_channel chan mail.Mail) *http.Server {
 	engine.Use(middleware.CORS())
 	engine.Use(middleware.Authenticator())
 	engine.Use(gin.Logger())
-
 	student.StudentRouter(engine)
 	// rc.StudentRouter(engine)
-	// application.StudentRouter(mail_channel, engine)
 
 	server := &http.Server{
 		Addr:         ":" + PORT,

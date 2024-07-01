@@ -18,7 +18,7 @@ func authServer(mail_channel chan mail.Mail) *http.Server {
 	r.Use(gin.Logger())
 
 	auth.Router(mail_channel, r)
-
+	
 	server := &http.Server{
 		Addr:         ":" + PORT,
 		Handler:      r,
