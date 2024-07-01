@@ -4,7 +4,6 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"github.com/pclubiitk/fep-backend/application"
 	"github.com/pclubiitk/fep-backend/mail"
 	"github.com/pclubiitk/fep-backend/middleware"
 	"github.com/pclubiitk/fep-backend/student"
@@ -19,7 +18,6 @@ func studentServer(mail_channel chan mail.Mail) *http.Server {
 	engine.Use(gin.Logger())
 	student.StudentRouter(engine)
 	// rc.StudentRouter(engine)
-	application.StudentRouter(engine)
 
 	server := &http.Server{
 		Addr:         ":" + PORT,

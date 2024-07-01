@@ -1,9 +1,7 @@
-package application
+package project
 
 import (
 	"net/http"
-	
-
 	"github.com/gin-gonic/gin"
 	m "github.com/pclubiitk/fep-backend/middleware"
 	"github.com/sirupsen/logrus"

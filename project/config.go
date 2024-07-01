@@ -31,7 +31,7 @@ func openConnection() {
 	}
 
 	db = database
-	err = db.AutoMigrate(&Project{})
+	err = db.AutoMigrate(&Project{},&Application{})
 	if err != nil {
 		logrus.Fatal("Failed to migrate project database: ", err)
 		panic(err)

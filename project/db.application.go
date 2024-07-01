@@ -1,4 +1,4 @@
-package application
+package project
 
 import "github.com/gin-gonic/gin"
 
