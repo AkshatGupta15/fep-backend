@@ -14,7 +14,6 @@ DBNAME:
   AUTH: "auth"
   STUDENT: "student"
   APPOINTMENT: "appointment"
-  APPLICATION: "application"
   PROJECT: "project"
 OTP:
   EXPIRATION: 20
