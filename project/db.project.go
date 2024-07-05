@@ -3,7 +3,7 @@ package project
 import "github.com/gin-gonic/gin"
 
 func getProject(ctx *gin.Context, project *Project, id uint) error {
-	tx := db.WithContext(ctx).Where("project_id = ?", id).First(project)
+	tx := db.WithContext(ctx).Where("id = ?", id).First(project)
 	return tx.Error
 }
 func getAllProjects(ctx *gin.Context, projects *[]Project) error {
@@ -11,11 +11,11 @@ func getAllProjects(ctx *gin.Context, projects *[]Project) error {
 	return tx.Error
 }
 func getLimitedProjects(ctx *gin.Context, projects *[]Project, lastFetchedId uint, pageSize int) error {
-	tx := db.WithContext(ctx).Order("id asc").Where("project_id >= ?", lastFetchedId).Limit(pageSize).Find(projects)
+	tx := db.WithContext(ctx).Order("id asc").Where("id >= ?", lastFetchedId).Limit(pageSize).Find(projects)
 	return tx.Error
 }
 func updateProject(ctx *gin.Context, project *Project) (bool, error) {
-	tx := db.WithContext(ctx).Where("project_id = ?", project.ProjectID).Updates(project)
+	tx := db.WithContext(ctx).Where("id = ?", project.ID).Updates(project)
 	return tx.RowsAffected > 0, tx.Error
 }
 func createProject(ctx *gin.Context, project *Project) error {
@@ -27,7 +27,7 @@ func createProjects(ctx *gin.Context, projects *[]Project) error {
 	return tx.Error
 }
 func deleteProject(ctx *gin.Context, id uint) error {
-	tx := db.WithContext(ctx).Where("project_id = ?", id).Delete(&Project{})
+	tx := db.WithContext(ctx).Where("id = ?", id).Delete(&Project{})
 	return tx.Error
 }
 func GetProjectName(ctx *gin.Context, id uint) (string, error) {

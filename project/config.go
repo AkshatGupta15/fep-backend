@@ -15,7 +15,7 @@ func openConnection() {
 	port := viper.GetString("DATABASE.PORT")
 	password := viper.GetString("DATABASE.PASSWORD")
 
-	dbName := viper.GetString("DBNAME.PROJECT")
+	dbName := viper.GetString("DBNAME.APPLICATION")
 	user := viper.GetString("DATABASE.USER")
 
 	dsn := "host=" + host + " user=" + user + " password=" + password
@@ -31,13 +31,13 @@ func openConnection() {
 	}
 
 	db = database
-	err = db.AutoMigrate(&Project{},&Application{})
+	err = db.AutoMigrate(&Project{}, &Application{})
 	if err != nil {
-		logrus.Fatal("Failed to migrate project database: ", err)
+		logrus.Fatal("Failed to migrate project and application database: ", err)
 		panic(err)
 	}
 
-	logrus.Info("Connected to project database")
+	logrus.Info("Connected to project and application database")
 }
 
 func init() {

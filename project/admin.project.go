@@ -55,7 +55,7 @@ func updateProjectHandler(ctx *gin.Context) {
 		return
 	}
 
-	if updateProjectRequest.ProjectID == 0 {
+	if updateProjectRequest.ID == 0 {
 		ctx.AbortWithStatusJSON(http.StatusBadRequest, gin.H{"error": "Enter Project ID"})
 		return
 	}
@@ -70,7 +70,7 @@ func updateProjectHandler(ctx *gin.Context) {
 		return
 	}
 
-	logrus.Infof("A project with id %d is updated by %s", updateProjectRequest.ProjectID, m.GetUserID(ctx))
+	logrus.Infof("A project with id %d is updated by %s", updateProjectRequest.ID, m.GetUserID(ctx))
 
 	ctx.JSON(http.StatusOK, gin.H{"status": "Successfully updated"})
 }
