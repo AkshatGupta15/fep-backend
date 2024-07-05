@@ -15,7 +15,7 @@ func openConnection() {
 	port := viper.GetString("DATABASE.PORT")
 	password := viper.GetString("DATABASE.PASSWORD")
 
-	dbName := viper.GetString("DBNAME.STUDENT")
+	dbName := viper.GetString("DBNAME.APPLICATION")
 	user := viper.GetString("DATABASE.USER")
 
 	dsn := "host=" + host + " user=" + user + " password=" + password
@@ -25,7 +25,7 @@ func openConnection() {
 		// Logger: logger.Default.LogMode(logger.Info),
 	})
 	if err != nil {
-		logrus.Fatal("Failed to connect to student database: ", err)
+		logrus.Fatal("Failed to connect to application database: ", err)
 		panic(err)
 	}
 

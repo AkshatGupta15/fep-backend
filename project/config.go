@@ -1,6 +1,7 @@
 package project
 
 import (
+	"github.com/pclubiitk/fep-backend/student"
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
 	"gorm.io/driver/postgres"
@@ -31,7 +32,7 @@ func openConnection() {
 	}
 
 	db = database
-	err = db.AutoMigrate(&Project{}, &Application{})
+	err = db.AutoMigrate(&Project{}, &Application{}, &student.Student{})
 	if err != nil {
 		logrus.Fatal("Failed to migrate project and application database: ", err)
 		panic(err)

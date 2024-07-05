@@ -33,7 +33,7 @@ type Application struct {
 	CPI                 float64         `json:"cpi"`
 	ProjectID           uint            `json:"project_id" gorm:"index;->;<-:create"`
 	Project             Project         `json:"-" gorm:"foreignkey:ProjectID"`
-	StudentID           uint            `json:"studentt_id" gorm:"index;->;<-:create"`
+	StudentID           uint            `json:"student_id" gorm:"index;->;<-:create"`
 	Student             student.Student `json:"-" gorm:"foreignkey:StudentID"`
 	ProfessorName       string          `json:"professor_name"`
 	ProfessorEmailId    string          `json:"professor_email_id"`
