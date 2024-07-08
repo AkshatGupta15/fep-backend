@@ -7,6 +7,8 @@ PORT:
   APPOINTMENT: "8081"
   STUDENT: "8082"
   PROJECT: "8083"
+  ADMIN:
+    APPLICATION: "3492"
 MAIL:
   HOST: "smtp.cc.iitk.ac.in"
   PORT: "25"
@@ -15,6 +17,9 @@ DBNAME:
   STUDENT: "student"
   APPOINTMENT: "appointment"
   PROJECT: "project"
+  APPLICATION: "application"
 OTP:
   EXPIRATION: 20
   SIZE: 6
+
+   

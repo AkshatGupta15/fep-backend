@@ -9,14 +9,16 @@ import (
 	"github.com/spf13/viper"
 )
 
-func studentProjectServer() *http.Server {
-	PORT := viper.GetString("PORT.PROJECT")
+func adminProjectServer() *http.Server {
+	PORT := viper.GetString("PORT.ADMIN.APPLICATION")
 	engine := gin.New()
 	engine.Use(middleware.CORS())
 	engine.Use(middleware.Authenticator())
+	engine.Use(middleware.EnsurePsuedoAdmin())
 	engine.Use(gin.Recovery())
 	engine.Use(gin.Logger())
-	project.StudentRouter(engine)
+
+	project.AdminRouter(engine)
 
 	server := &http.Server{
 		Addr:         ":" + PORT,
