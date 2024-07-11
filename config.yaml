@@ -3,16 +3,20 @@ DATABASE:
   PORT: "5432"
   USER: "postgres"
 PORT:
-  AUTH: "8080"
-  APPOINTMENT: "8081"
+  AUTH: "8084"
   STUDENT: "8082"
   PROJECT: "8083"
+  PROF: "8081"
   ADMIN:
     APPLICATION: "3492"
+    PROF: "3490"
+    STUDENT: 3500
+
 MAIL:
-  HOST: "smtp.cc.iitk.ac.in"
+  HOST: "mmtp.iitk.ac.in"
   PORT: "25"
 DBNAME:
+  PROF: "prof"
   AUTH: "auth"
   STUDENT: "student"
   APPOINTMENT: "appointment"
@@ -21,5 +25,8 @@ DBNAME:
 OTP:
   EXPIRATION: 20
   SIZE: 6
-
+JWT:
+  EXPIRATION:
+    LONG: 5000
+    SHORT: 200
    
