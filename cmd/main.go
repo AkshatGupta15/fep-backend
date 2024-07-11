@@ -30,7 +30,13 @@ func main() {
 		return studentServer(mail_channel).ListenAndServe()
 	})
 	g.Go(func() error {
+		return profServer().ListenAndServe()
+	})
+	g.Go(func() error {
 		return studentProjectServer().ListenAndServe()
+	})
+	g.Go(func() error {
+		return adminProfServer().ListenAndServe()
 	})
 	g.Go(func() error {
 		return adminProjectServer().ListenAndServe()
