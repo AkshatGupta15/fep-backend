@@ -62,3 +62,21 @@ func getLimitedProjectsHandler(ctx *gin.Context) {
 
 	ctx.JSON(http.StatusOK, projects)
 }
+func getProjectsFromProfHandler(ctx *gin.Context) {
+	var projects []Project
+
+	cid, err := strconv.ParseUint(ctx.Param("cid"), 10, 32)
+	if err != nil {
+		ctx.AbortWithStatusJSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	err = getProjectsFromProf(ctx, &projects, uint(cid))
+
+	if err != nil {
+		ctx.AbortWithStatusJSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	ctx.JSON(http.StatusOK, projects)
+}

@@ -10,6 +10,7 @@ func AdminRouter(r *gin.Engine) {
 		admin.GET("/project", getAllProjectsHandler)
 		admin.GET("/project/:cid", getProjectHandler)
 		admin.GET("/project/limited", getLimitedProjectsHandler)
+		admin.GET("/project/prof/:cid", getProjectsFromProfHandler)
 
 		admin.PUT("/project", updateProjectHandler)
 		admin.POST("/project", addNewHandler)
@@ -29,11 +30,13 @@ func AdminRouter(r *gin.Engine) {
 
 }
 func StudentRouter(r *gin.Engine) {
-	student := r.Group("/api/student/application")
+	student := r.Group("/api/student")
 	{
-		student.POST("", addApplicationHandler)
-		student.GET("/:cid", getApplicationsofStudentHandler)
-		student.PUT("", updateApplicationHandler)
-		student.DELETE("/:cid", deleteApplicationHandler)
+		student.GET("/project", getAllProjectsHandler)
+		student.GET("/project/prof/:cid", getProjectsFromProfHandler)
+		student.POST("/application", addApplicationHandler)
+		student.GET("/application/:cid", getApplicationsofStudentHandler)
+		student.PUT("/application", updateApplicationHandler)
+		student.DELETE("/application/:cid", deleteApplicationHandler)
 	}
 }
