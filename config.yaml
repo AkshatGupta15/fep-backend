@@ -10,7 +10,7 @@ PORT:
   ADMIN:
     APPLICATION: "3492"
     PROF: "3490"
-    STUDENT: 3500
+    STUDENT: "3500"
 
 MAIL:
   HOST: "mmtp.iitk.ac.in"

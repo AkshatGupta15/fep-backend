@@ -17,14 +17,14 @@ type Mail struct {
 
 func (mail *Mail) BuildMessage() []byte {
 	message := "MIME-version: 1.0;\nContent-Type: text/html; charset=\"UTF-8\";\r\n"
-	message += fmt.Sprintf("From: Health Centre Automation System IITK<%s>\r\n", sender)
-	message += fmt.Sprintf("Subject: %s | Health Centre Automation System\r\n", mail.Subject)
-
+	message += fmt.Sprintf("From: Foreign Exposure program<%s>\r\n", sender)
+	message += fmt.Sprintf("Subject: %s | Foreign Exposure Program\r\n", mail.Subject)
 
 	message += fmt.Sprintf("To: %s\r\n\r\n", mail.To)
 
 	message += strings.Replace(mail.Body, "\n", "<br>", -1)
-	message += "<br><br>--<br>Health Centre Automation System<br>"
+	message += "<br><br>--<br>Foreign Exposure program<br>"
+	message += "<br><br>--<br>Academics and career council<br>"
 	message += "Indian Institute of Technology Kanpur<br><br>"
 	message += "<small>This is an auto-generated email. Please do not reply.</small>"
 

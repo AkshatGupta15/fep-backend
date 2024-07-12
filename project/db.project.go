@@ -30,6 +30,10 @@ func deleteProject(ctx *gin.Context, id uint) error {
 	tx := db.WithContext(ctx).Where("id = ?", id).Delete(&Project{})
 	return tx.Error
 }
+func getProjectsFromProf(ctx *gin.Context, projects *[]Project, id uint) error {
+	tx := db.WithContext(ctx).Where("prof_id = ?", id).Find(projects)
+	return tx.Error
+}
 func GetProjectName(ctx *gin.Context, id uint) (string, error) {
 	var p Project
 	err := getProject(ctx, &p, id)
@@ -38,14 +42,7 @@ func GetProjectName(ctx *gin.Context, id uint) (string, error) {
 	}
 	return p.ProjectName, nil
 }
-func GetProfessorName(ctx *gin.Context, id uint) (string, error) {
-	var p Project
-	err := getProject(ctx, &p, id)
-	if err != nil {
-		return "", err
-	}
-	return p.ProfessorName, nil
-}
+
 func GetUniversityName(ctx *gin.Context, id uint) (string, error) {
 	var p Project
 	err := getProject(ctx, &p, id)

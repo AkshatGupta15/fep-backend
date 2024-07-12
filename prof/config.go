@@ -15,7 +15,7 @@ func openConnection() {
 	port := viper.GetString("DATABASE.PORT")
 	password := viper.GetString("DATABASE.PASSWORD")
 
-	dbName := viper.GetString("DBNAME.PROF")
+	dbName := viper.GetString("DBNAME.APPLICATION")
 	user := viper.GetString("DATABASE.USER")
 
 	dsn := "host=" + host + " user=" + user + " password=" + password
