@@ -32,9 +32,9 @@ func openConnection() {
 	}
 
 	db = database
-	err = db.AutoMigrate(&Project{}, &Application{}, &student.Student{})
+	err = db.AutoMigrate(&Project{}, &Application{}, &student.Student{}, &SelectedStudent{})
 	if err != nil {
-		logrus.Fatal("Failed to migrate project and application database: ", err)
+		logrus.Fatal("Failed to migrate project ,application and student database: ", err)
 		panic(err)
 	}
 
