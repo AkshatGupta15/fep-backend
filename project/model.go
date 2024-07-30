@@ -31,3 +31,10 @@ type Application struct {
 	StudentID uint            `json:"student_id" gorm:"index;->;<-:create"`
 	Student   student.Student `json:"-" gorm:"foreignkey:StudentID"`
 }
+type SelectedStudent struct {
+	gorm.Model
+	ProjectID uint            `json:"project_id" gorm:"index;->;<-:create"`
+	Project   Project         `json:"-" gorm:"foreignkey:ProjectID"`
+	StudentID uint            `json:"student_id" gorm:"index;->;<-:create"`
+	Student   student.Student `json:"-" gorm:"foreignkey:StudentID"`
+}

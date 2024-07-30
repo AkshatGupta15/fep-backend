@@ -36,7 +36,18 @@ func StudentRouter(r *gin.Engine) {
 		student.GET("/project/prof/:cid", getProjectsFromProfHandler)
 		student.POST("/application", addApplicationHandler)
 		student.GET("/application/:cid", getApplicationsofStudentHandler)
+		student.GET("/result/:cid", getSelectedStudentForStudentHandler)
 		student.PUT("/application", updateApplicationHandler)
 		student.DELETE("/application/:cid", deleteApplicationHandler)
+	}
+}
+func ProjectResultRouter(r *gin.Engine) {
+	prof := r.Group("/api/project")
+	{
+
+		prof.GET("/result/:cid", getSelectedStudentForProjectHandler)
+		prof.POST("/result", addSelectedStudentHandler)
+		prof.GET("/result/student/:cid", getSelectedStudentForStudentHandler)
+		prof.DELETE("/result/:cid", deleteSelectedStudentHandler)
 	}
 }
