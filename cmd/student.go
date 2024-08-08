@@ -15,10 +15,9 @@ func studentServer(mail_channel chan mail.Mail) *http.Server {
 	PORT := viper.GetString("PORT.STUDENT")
 	engine := gin.New()
 	engine.Use(middleware.CORS())
-	// engine.Use(middleware.Authenticator())
+	engine.Use(middleware.Authenticator())
 	engine.Use(gin.Logger())
 	student.StudentRouter(engine)
-	// rc.StudentRouter(engine)
 
 	server := &http.Server{
 		Addr:         ":" + PORT,
@@ -33,7 +32,7 @@ func resultServer() *http.Server {
 	PORT := viper.GetString("PORT.RESULT")
 	engine := gin.New()
 	engine.Use(middleware.CORS())
-	// engine.Use(middleware.Authenticator())
+	engine.Use(middleware.Authenticator())
 	engine.Use(gin.Recovery())
 	engine.Use(gin.Logger())
 	project.ProjectResultRouter(engine)
