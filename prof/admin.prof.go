@@ -12,25 +12,6 @@ import (
 func greetingHandler(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, gin.H{"message": "Hey!!"})
 }
-func addNewHandler(ctx *gin.Context) {
-	var newProfRequest Prof
-
-	if err := ctx.ShouldBindJSON(&newProfRequest); err != nil {
-		ctx.AbortWithStatusJSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-		return
-	}
-
-	err := createProf(ctx, &newProfRequest)
-	if err != nil {
-		ctx.AbortWithStatusJSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-		return
-	}
-
-	logrus.Infof("A new Prof %s is added with id %d by %s", newProfRequest.ProfessorName, newProfRequest.ID, m.GetUserID(ctx))
-
-	ctx.JSON(http.StatusOK, gin.H{"status": "Successfully added"})
-
-}
 
 // func addNewBulkHandler(ctx *gin.Context) {
 // 	var request []Company

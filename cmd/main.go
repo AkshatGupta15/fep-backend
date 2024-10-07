@@ -41,9 +41,9 @@ func main() {
 	g.Go(func() error {
 		return adminProjectServer().ListenAndServe()
 	})
-	g.Go(func() error {
-		return resultServer().ListenAndServe()
-	})
+	// g.Go(func() error {
+	// 	return resultServer().ListenAndServe()
+	// })
 
 	log.Println("Server Started...")
 	if err := g.Wait(); err != nil {

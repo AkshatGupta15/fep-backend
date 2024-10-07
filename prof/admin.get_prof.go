@@ -2,6 +2,7 @@ package prof
 
 import (
 	"net/http"
+	"strconv"
 
 	"github.com/gin-gonic/gin"
 	"github.com/pclubiitk/fep-backend/util"
@@ -20,18 +21,15 @@ func getAllProfHandler(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, companies)
 }
 
-func getProfHandler(ctx *gin.Context) {
+func getProfHandlerAdmin(ctx *gin.Context) {
 	var Prof Prof
-
-	cid, err := extractProfID(ctx)
-
-	// cid, err := strconv.ParseUint(ctx.Param("cid"), 10, 32)
+	// cid, err := extractProfID(ctx)
+	pid, err := strconv.ParseUint(ctx.Param("pid"), 10, 32)
 	if err != nil {
 		ctx.AbortWithStatusJSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
-
-	err = getProf(ctx, &Prof, uint(cid))
+	err = getProf(ctx, &Prof, uint(pid))
 
 	if err != nil {
 		ctx.AbortWithStatusJSON(http.StatusBadRequest, gin.H{"error": err.Error()})

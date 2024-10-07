@@ -33,11 +33,11 @@ func openConnection() {
 
 	err = db.AutoMigrate(&Prof{})
 	if err != nil {
-		logrus.Fatal("Failed to migrate company database: ", err)
+		logrus.Fatal("Failed to migrate prof database: ", err)
 		panic(err)
 	}
 
-	logrus.Info("Connected to company database")
+	logrus.Info("Connected to prof database")
 }
 
 func init() {

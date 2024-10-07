@@ -24,7 +24,7 @@ func updateProf(ctx *gin.Context, company *Prof) (bool, error) {
 	return tx.RowsAffected > 0, tx.Error
 }
 
-func createProf(ctx *gin.Context, company *Prof) error {
+func CreateProf(ctx *gin.Context, company *Prof) error {
 	tx := db.WithContext(ctx).Create(company)
 	return tx.Error
 }

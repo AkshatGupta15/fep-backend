@@ -7,7 +7,15 @@ import (
 	"github.com/pclubiitk/fep-backend/constants"
 	"github.com/pclubiitk/fep-backend/mail"
 	"github.com/pclubiitk/fep-backend/middleware"
+	"github.com/pclubiitk/fep-backend/prof"
 )
+
+type profSignUpRequest struct {
+	Password         string `json:"password"`
+	ProfessorName    string `json:"professor_name"`
+	ProfessorEmailId string `json:"professor_email_id"`
+	UniversityName   string `json:"university_name"`
+}
 
 func profSignUpHandler(mail_channel chan mail.Mail) gin.HandlerFunc {
 	return func(ctx *gin.Context) {
@@ -21,28 +29,40 @@ func profSignUpHandler(mail_channel chan mail.Mail) gin.HandlerFunc {
 			return
 		}
 
-		var request User
+		var request profSignUpRequest
 		if err := ctx.ShouldBindJSON(&request); err != nil {
 			ctx.AbortWithStatusJSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 			return
 		}
-
-		if request.Name == "" || request.Password == "" || request.UserID == "" {
-			ctx.AbortWithStatusJSON(http.StatusBadRequest, gin.H{"error": "Invalid request"})
+		if request.ProfessorName == "" || request.ProfessorEmailId == "" || request.UniversityName == "" || request.Password == "" {
+			ctx.AbortWithStatusJSON(http.StatusBadRequest, gin.H{"error": "ProfessorName, ProfessorEmailId, password and UniversityName are required"})
 			return
 		}
+		newProf := prof.Prof{
+			ProfessorName:    request.ProfessorName,
+			ProfessorEmailId: request.ProfessorEmailId,
+			UniversityName:   request.UniversityName,
+		}
+		err := prof.CreateProf(ctx, &newProf)
+		if err != nil {
+			ctx.AbortWithStatusJSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+			return
+		}
+		var UserReq User
+		UserReq.UserID = request.ProfessorEmailId
+		// password = GeneratePassword()
+		password := request.Password
+		UserReq.Password = hashAndSalt(password)
+		UserReq.RoleID = constants.PROF
+		UserReq.Name = request.ProfessorName
 
-		pass := request.Password
-		request.Password = hashAndSalt(request.Password)
-		request.RoleID = constants.PROF
-
-		id, err := firstOrCreateUser(ctx, &request)
+		id, err := firstOrCreateUser(ctx, &UserReq)
 		if err != nil {
 			ctx.AbortWithStatusJSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 			return
 		}
 
-		mail_channel <- mail.GenerateMail(request.UserID, "New Credentials generated", "Your new credentials are: \n\nUser ID: "+request.UserID+"\nPassword: "+pass+"\n\nYou can reset the password from // To be added")
+		mail_channel <- mail.GenerateMail(UserReq.UserID, "New Credentials generated", "Your new credentials are: \n\nUser ID: "+UserReq.UserID+"\nPassword: "+UserReq.Password+"\n\nYou can reset the password from // To be added")
 		// <a href= \"https://anc.iitk.ac.in/reset-password\">here</a>
 		ctx.JSON(http.StatusOK, gin.H{"id": id})
 	}

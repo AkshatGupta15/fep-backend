@@ -9,12 +9,10 @@ func AdminRouter(r *gin.Engine) {
 	{
 		admin.GET("/hello", greetingHandler)
 		admin.GET("", getAllProfHandler)
-		admin.GET("/:pid", getProfHandler)
+		admin.GET("/:pid", getProfHandlerAdmin)
 		admin.GET("/limited", getLimitedProfHandler)
 
 		admin.PUT("", updateProfHandler)
-		admin.POST("", addNewHandler)
-
 		admin.DELETE("/:cid", deleteProfHandler)
 
 	}
