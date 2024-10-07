@@ -24,7 +24,7 @@ func updateProf(ctx *gin.Context, company *Prof) (bool, error) {
 	return tx.RowsAffected > 0, tx.Error
 }
 
-func createProf(ctx *gin.Context, company *Prof) error {
+func CreateProf(ctx *gin.Context, company *Prof) error {
 	tx := db.WithContext(ctx).Create(company)
 	return tx.Error
 }
@@ -49,7 +49,7 @@ func GetProfName(ctx *gin.Context, id uint) (string, error) {
 }
 
 func FetchProfIDByEmail(ctx *gin.Context, email string) (uint, error) {
-	var hr Prof
-	tx := db.WithContext(ctx).Where("email = ?", email).First(&hr)
-	return hr.ID, tx.Error
+	var prof Prof
+	tx := db.WithContext(ctx).Where("professor_email_id = ?", email).First(&prof)
+	return prof.ID, tx.Error
 }

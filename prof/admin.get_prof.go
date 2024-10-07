@@ -21,23 +21,22 @@ func getAllProfHandler(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, companies)
 }
 
-func getProfHandler(ctx *gin.Context) {
-	var company Prof
+func getProfHandlerAdmin(ctx *gin.Context) {
+	var Prof Prof
+	// cid, err := extractProfID(ctx)
+	pid, err := strconv.ParseUint(ctx.Param("pid"), 10, 32)
+	if err != nil {
+		ctx.AbortWithStatusJSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+	err = getProf(ctx, &Prof, uint(pid))
 
-	cid, err := strconv.ParseUint(ctx.Param("cid"), 10, 32)
 	if err != nil {
 		ctx.AbortWithStatusJSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
 
-	err = getProf(ctx, &company, uint(cid))
-
-	if err != nil {
-		ctx.AbortWithStatusJSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-		return
-	}
-
-	ctx.JSON(http.StatusOK, company)
+	ctx.JSON(http.StatusOK, Prof)
 }
 
 func getLimitedProfHandler(ctx *gin.Context) {

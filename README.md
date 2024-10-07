@@ -27,6 +27,14 @@
       "user_id": "akshat23@iitk.ac.in"
    }
    ```
+  ### Repeat For RollNo Verification 
+
+   ```
+   {
+      "user_id": "akshat23@iitk.ac.in"
+   }
+   ```
+
    1. Then open psql shell and run `\c auth`
    2. Run `select user_id, otp from otps;`
    3. Copy the otp corresponding to the user_id
@@ -35,8 +43,11 @@
    ```
    {
     "user_id" : "akshat23@iitk.ac.in",
-    "password" : "passqord",
-    "user_otp" : "otp" //copied from step 3
+    "name":"Akshat",
+    "roll_no":"230094",
+    "roll_no_otp":"otp", //get from step 3
+    "password" : "password",
+    "user_otp" : "otp" //get from step 3
 }
    ```
 ## Change Role_id : 
